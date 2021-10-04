@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import walter from '../assets/images/dummy-avatar.jpg';
 
 export default function Navbar() {
+  const [contador, setContador] = useState(12)
+
+  function aumentaMensagem(event) {
+    event.preventDefault()
+    setContador(contador + 1)
+  }
+
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -14,7 +22,7 @@ export default function Navbar() {
 
         {/* <!-- Nav Item - Alerts --> */}
         <li className="nav-item dropdown no-arrow mx-1">
-          <a className="nav-link dropdown-toggle" href="/" id="alertsDropdown">
+          <a className="nav-link dropdown-toggle" href="/" id="alertsDropdown" onClick={e => aumentaMensagem(e)}>
             <i className="fas fa-bell fa-fw"></i>
             {/* <!-- Counter - Alerts --> */}
             <span className="badge badge-danger badge-counter">3+</span>
@@ -23,10 +31,10 @@ export default function Navbar() {
 
         {/* <!-- Nav Item - Messages --> */}
         <li className="nav-item dropdown no-arrow mx-1">
-          <a className="nav-link dropdown-toggle" href="/" id="messagesDropdown">
+          <a className="nav-link dropdown-toggle" href="/" id="messagesDropdown" onClick={aumentaMensagem}>
             <i className="fas fa-envelope fa-fw"></i>
             {/* <!-- Counter - Messages --> */}
-            <span className="badge badge-danger badge-counter">7</span>
+            <span className="badge badge-danger badge-counter">{contador}</span>
           </a>
         </li>
 

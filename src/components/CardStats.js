@@ -1,4 +1,7 @@
-function CardStats({ icone = "", valor, cor, titulo }) {
+import MeusTiposPrediletos from 'prop-types';
+
+function CardStats({ icone = "", valor, cor, titulo, children }) {
+  console.log(children)
   return (
     <>
       <div className="col-md-4 mb-4">
@@ -13,11 +16,26 @@ function CardStats({ icone = "", valor, cor, titulo }) {
                 <i className={"fas fa-2x text-gray-300 " + icone}></i>
               </div>
             </div>
+            {children}
           </div>
         </div>
       </div>
     </>
   )
+}
+
+CardStats.propTypes = {
+  icone: MeusTiposPrediletos.string,
+  valor: MeusTiposPrediletos.string,
+  cor: MeusTiposPrediletos.string,
+  titulo: MeusTiposPrediletos.string.isRequired
+}
+
+CardStats.defaultProps = {
+  titulo: 'AQUI VAI O TÍTULO',
+  valor: 'QUANTIDADE EM STRING',
+  icone: 'ICONE A SER USADO DO FONT-AWESOME',
+  cor: 'danger'
 }
 
 export default CardStats;

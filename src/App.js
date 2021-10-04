@@ -4,8 +4,36 @@ import './assets/css/app.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import CardStats from './components/CardStats';
+import Container from './components/Container';
 
 function App() {
+  let estatisticas = [
+    {
+      cor: 'primary',
+      titulo: 'Produtos no banco de dados',
+      valor: '200',
+      icone: 'fa-clipboard-list'
+    },
+    {
+      cor: 'success',
+      titulo: 'Amount in products',
+      valor: '$546.456',
+      icone: 'fa-dollar-sign'
+    },
+    {
+      cor: 'warning',
+      titulo: 'Users quantity',
+      valor: '38',
+      icone: 'fa-user-check'
+    },
+    {
+      cor: 'danger',
+      titulo: 'Customer churn',
+      valor: '100',
+      icone: 'fa-bomb'
+    }
+  ];
+
   return (
     <div id="wrapper">
 
@@ -34,20 +62,17 @@ function App() {
             </div>
 
             {/* <!-- Content Row --> */}
-            <div className="row">
 
-              {/* <!-- Amount of Products in DB --> */}
-              <CardStats cor="primary" titulo="Produtos no banco de dados" valor="200" icone="fa-clipboard-list" />
+            <Container>
 
-              {/* <!-- $$$ of all products in DB --> */}
-              <CardStats cor="success" titulo="Amount in products" valor="$546.456" icone="fa-dollar-sign" />
+              {estatisticas.map((estatistica, indice) =>
+                <CardStats key={indice} cor={estatistica.cor} titulo={estatistica.titulo} valor={estatistica.valor} icone={estatistica.icone} />
+              )}
 
-              {/* <!-- Amount of users in DB --> */}
-              <CardStats cor="warning" titulo="Users quantity" valor="38" icone="fa-user-check" />
-
-            </div>
+            </Container>
 
             {/* <!-- Content Row --> */}
+            <Container>
             <div className="row">
               {/* <!-- Last Product in DB --> */}
               <div className="col-lg-6 mb-4">
@@ -57,7 +82,7 @@ function App() {
                   </div>
                   <div className="card-body">
                     <div className="text-center">
-                      <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: '25rem'}} src={dummy} alt="dummy" />
+                      <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: '25rem' }} src={dummy} alt="dummy" />
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, consequatur explicabo officia inventore libero veritatis iure voluptate reiciendis a magnam, vitae, aperiam voluptatum non corporis quae dolorem culpa exercitationem ratione?</p>
                     <a target="_blank" rel="nofollow" href="/">View product detail</a>
@@ -120,6 +145,7 @@ function App() {
                 </div>
               </div>
             </div>
+            </Container>
           </div>
           {/* <!-- /.container-fluid --> */}
         </div>
